@@ -27,6 +27,11 @@ public class Gaulois {
 				+ romain.getNom());
 		romain.recevoirCoup(force / 3);
 	}
+	
+	public void boirePotion(int forcePotion) {
+		this.effetPotion = forcePotion;
+		this.parler("Merci Druide, je sens que ma force est " + forcePotion + " fois décuplée. ");
+	}
 
 	@Override
 	public String toString() {
@@ -42,5 +47,7 @@ public class Gaulois {
 		asterix.parler("Bonjour");
 		Romain leRomain = new Romain("leRomain", 5);
 		asterix.frapper(leRomain);
+		
+		asterix.boirePotion(4);
 	}
 }
