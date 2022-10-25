@@ -1,5 +1,7 @@
 package personnages;
 
+import objet.Equipement;
+
 public class Romain {
 	private String nom;
 	private int force;
@@ -37,12 +39,12 @@ public class Romain {
 		forceCoup = calculResistanceEquipement(forceCoup);
 		
 		force -= forceCoup;
-		if (force > 0) {
-			parler("Aïe");
-		} else {
-			equipementEjecte = ejecterEquipement();
-			parler("J'abandonne...");
-		}
+//		if (force > 0) {
+//			parler("Aïe");
+//		} else {
+//			equipementEjecte = ejecterEquipement();
+//			parler("J'abandonne...");
+//		}
 		if (force == 0) {
 		    parler("Aïe");
 		}
@@ -56,6 +58,7 @@ public class Romain {
 	}
 	
 	public void sEquiper(Equipement equipement) {
+		
 		switch(this.nbEquipement) {
 		
 			case 2: 
@@ -63,10 +66,17 @@ public class Romain {
 				break;
 			
 			case 1:
-				if (this.equipements[this.nbEquipement-1] == equipement) {
-					System.out.println("Le soldat " + this.nom + " possède déjà un " + equipement + "!");
-					break;
+				if (equipement == equipements[0] || equipement == equipements[1]) {
+					System.out.println(
+							"Le soldat" + this.nom + " possède déjà un " + equipements[this.nbEquipement - 1] + "!");
+				} else {
+					equipements[this.nbEquipement] = equipement;
+					System.out
+							.println("Le soldat" + this.nom + " s’équipe avec un " + equipements[this.nbEquipement] + ".");
+
+					this.nbEquipement++;
 				}
+				break;
 			
 			default:
 				this.nbEquipement++;
@@ -81,9 +91,9 @@ public class Romain {
 		if (nbEquipement != 0) {
 			texte += "\nMais heureusement, grace à mon équipement sa force est diminué de ";
 			for (int i = 0; i < nbEquipement; i++) {
-				if ((equipements[i] != null && equipements[i].equals(Equipement.BOUCLIER)) == true) {
+				if ((equipements[i] != null && equipements[i].equals(Equipement.BOUCLIER))) {
 					resistanceEquipement += 8;
-				} else {
+				} else if (equipements[i] != null && equipements[i].equals(Equipement.CASQUE)){
 					System.out.println("Equipement casque");
 					resistanceEquipement += 5;
 				}
