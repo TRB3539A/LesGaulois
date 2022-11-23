@@ -47,8 +47,6 @@ public class Scenario {
 			asterix.frapper(milexcus);
 		} while (milexcus.getForce() > 0);
 		
-//		Partie a decommenter
-		
 		Musee musee = new Musee();
 		asterix.faireUneDonnation(musee);
 	}
